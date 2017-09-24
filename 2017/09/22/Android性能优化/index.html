@@ -76,18 +76,18 @@
 <meta property="og:site_name" content="荒原">
 <meta property="og:description" content="注：之前对Android的优化有了解，工具也懂，就是分析不太熟练，无从下手的感觉，看了Google Android 性能优化 的视频，比较系统的学习了这块，特作学习备注。 Render 渲染 Android 屏幕 每秒刷新60hz，相当于16ms渲染，超过16ms，将在下次16ms中刷新，故产生卡顿。 cpu gpu 必须遵守相应的规则才能发挥正确的作用cpu: 重建显示列表次数过多，二是花费太多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_4.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_5_1.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_5_2.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_6.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_9.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_7.png">
-<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_8.png">
-<meta property="og:updated_time" content="2017-09-24T03:03:03.000Z">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_4.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_5_1.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_5_2.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_6.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_9.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_7.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_8.png">
+<meta property="og:updated_time" content="2017-09-24T03:08:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android性能优化一些理解">
 <meta name="twitter:description" content="注：之前对Android的优化有了解，工具也懂，就是分析不太熟练，无从下手的感觉，看了Google Android 性能优化 的视频，比较系统的学习了这块，特作学习备注。 Render 渲染 Android 屏幕 每秒刷新60hz，相当于16ms渲染，超过16ms，将在下次16ms中刷新，故产生卡顿。 cpu gpu 必须遵守相应的规则才能发挥正确的作用cpu: 重建显示列表次数过多，二是花费太多">
-<meta name="twitter:image" content="http://yoursite.com/2017/09/22/Android性能优化/imagefold/image_4.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/22/Android性能优化/image_4.jpg">
 
 
 
@@ -323,10 +323,10 @@
 <li><strong>cpu gpu 必须遵守相应的规则才能发挥正确的作用</strong><br><strong>cpu</strong>: 重建显示列表次数过多，二是花费太多的时间作废视图层次，并进行不需要的重绘。<br>gpu: 透支、多度绘制，过度着色的时候，浪费gpu处理时间。</li>
 <li><strong>Android的绘制原理</strong>：是将图像进行栅格化（Rasterization），拆分到不同的像素上在屏幕上进行显示。栅格化是一项非常耗时的操作。设备中gpu就是为了加速栅格化这个操作的。cpu在处理之前会发送一些指令给gpu，这一过程通常使用的API就是Android中的OpenGL ES。</li>
 <li><p>可以通过 <strong>“开发者模式”</strong> 中打开 <strong>“GPU绘制”</strong>，观察界面颜色，检测应用是否过度绘制。</p>
-<p><img src="imagefold/image_4.jpg" alt="logo"></p>
+<p><img src="/2017/09/22/Android性能优化/image_4.jpg" alt="logo"></p>
 </li>
 <li><p><strong>Canvas.clipRect</strong> 帮助你识别给定View的图形边界。边界之外的区域任何绘制操作会被忽略。不用懂得重叠原理，通过 <strong>Canvas.quickReject</strong> 可以判断给定区域是否完全在剪辑矩形之外。<br>通过Canvas.clipRect可以实现如下效果:</p>
-<p><img src="imagefold/image_5_1.png" alt="logo"><br><img src="imagefold/image_5_2.png" alt="logo"></p>
+<p><img src="/2017/09/22/Android性能优化/image_5_1.png" alt="logo"><br><img src="/2017/09/22/Android性能优化/image_5_2.png" alt="logo"></p>
 </li>
 <li><p>hierachy Viewer检测</p>
 </li>
@@ -349,7 +349,7 @@
 <li><p>将耗时操作从UI移除：解码图像是一项艰巨的任务。这也是我们不能轻易优化的任务。对于长时间运行的任务，尤其是那些涉及到网络访问、冗长的数据库调用和图像处理的任务，一般的规则是将它们从主线程中移走</p>
 </li>
 <li><p>Java中使用适当的集合容器：</p>
-<p><img src="imagefold/image_6.png" alt="logo"></p>
+<p><img src="/2017/09/22/Android性能优化/image_6.png" alt="logo"></p>
 </li>
 </ol>
 <p>存储和修改应用程序数据的代码的性能问题</p>
@@ -357,15 +357,15 @@
 <li><p>内存泄漏：通常指无法被释放的内存块。</p>
 </li>
 <li><p>内存溢出：申请的对象内存过大超过了剩余可用内存，内存泄漏会缓慢吞噬程序中可用内存，最终也会造成内存溢出。如下图</p>
-<p><img src="imagefold/image_9.png" alt="内存占用"></p>
+<p><img src="/2017/09/22/Android性能优化/image_9.png" alt="内存占用"></p>
 </li>
 <li><p>Java中通常不需要我们去管理操作申请、释放内存。随着应用的操作进行，系统会自动处理内存的清理。当大量GC操作的时候，很产生很大程度上的掉帧（超过16ms的呈像刷新）。</p>
 </li>
 <li><p>为了减少任意帧内启动GC的次数，需要着重优化程序的内存使用量。<br>这里推荐 <strong>“Memory Monitor”工具 可以大体直观得到程序在一段时间内占用的内存</strong></p>
-<p><img src="imagefold/image_7.png" alt="内存占用"></p>
+<p><img src="/2017/09/22/Android性能优化/image_7.png" alt="内存占用"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">一个图形显示java内存的时间。</div><div class="line">显示垃圾收集（GC）事件随着时间的推移。</div><div class="line">快速测试APP是否慢可能与过度的垃圾收集事件有关。</div><div class="line">快速测试应用程序崩溃是否与内存耗尽有关。</div></pre></td></tr></table></figure>
 </li>
-<li><p><strong>Heap Viewer 检测程序详细的内存占用</strong><br>Heap Viewer可以清楚的显示分配的类型、数量以及各自在堆中的容量。<br><img src="imagefold/image_8.png" alt="Heap Viewer 使用"></p>
+<li><p><strong>Heap Viewer 检测程序详细的内存占用</strong><br>Heap Viewer可以清楚的显示分配的类型、数量以及各自在堆中的容量。<br><img src="/2017/09/22/Android性能优化/image_8.png" alt="Heap Viewer 使用"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Android studio中打开DDMS</div><div class="line">1.图3 显示当前可用对象，以及个数占用的大小</div><div class="line">2.图4 显示这一数据的内存分配的数量</div></pre></td></tr></table></figure>
 </li>
 <li><p>先用 <strong>Memory Monitor观察 在用Heap Viewer<br>检测</strong></p>
